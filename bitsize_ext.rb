@@ -12,6 +12,7 @@ module BitSizeExt
   PREFIXES = %w(k M G T P E Z Y)
 
   refine Numeric do
+    # TODO: 小数に対応する
     PREFIXES.each.with_index(1) do |prefix, i|
       define_method(prefix        +   "B") { self * 1000 ** i * 8 } # Byte (SI接頭辞)
       define_method(prefix.upcase +  "iB") { self * 1024 ** i * 8 } # Byte (2進接頭辞) ※ Kが大文字になる
